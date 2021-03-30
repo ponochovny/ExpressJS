@@ -22,3 +22,12 @@ export const remove = (req, res) => {
     servers = servers.filter(s => s.id !== req.params.id)
     res.json({message: 'Server has been removed.'})
 }
+
+export const edit = (req, res) => {
+    // find index
+    let objIndex = servers.findIndex(obj => obj.id === req.body.id)
+
+    servers[objIndex].name = req.body.newName
+
+    res.json({message: 'Server has been edited.'})
+}
