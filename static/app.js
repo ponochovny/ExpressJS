@@ -68,6 +68,12 @@ var app = new Vue({
             objIndex = this.servers.findIndex((obj => obj.id === id))
 
             this.servers[objIndex].name = newName
+        },
+        async getItemById(id) {
+            const res = await fetch(`/api/server/${id}`)
+            let result = await res.json()
+
+            console.log('result:', result)
         }
     }
 })

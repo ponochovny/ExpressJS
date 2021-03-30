@@ -31,3 +31,8 @@ export const edit = (req, res) => {
 
     res.json({message: 'Server has been edited.'})
 }
+
+export const getItemById = (req, res) => {
+    let found = servers.find(obj => obj.id === req.params.id)
+    res.status(200).json(found)
+}
