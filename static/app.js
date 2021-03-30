@@ -10,6 +10,8 @@
 //     }
 // }
 
+// import { remove } from "../controllers/servers"
+
 // Vue.createApp(App).mount('#app')
 
 // alert(1)
@@ -40,7 +42,11 @@ var app = new Vue({
             })
             this.name = ''
             const newServer = await res.json()
-            console.log(newServer)
+            this.servers.push(newServer)
+        },
+        async remove(id) {
+            await fetch(`/api/server/${id}`, {method: 'DELETE'})
+            this.servers = this.servers.filter(s => s.id !== id)
         }
     }
 })

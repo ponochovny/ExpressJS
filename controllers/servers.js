@@ -10,6 +10,15 @@ export const getAll = (req, res) => {
 }
 
 export const create = (req, res) => {
-    console.log(req.body)
-    res.status(201).json({})
+    const newServer = {
+        id: Date.now().toString(),
+        ...req.body
+    }
+    servers.push(newServer)
+    res.status(201).json(newServer)
+}
+
+export const remove = (req, res) => {
+    servers = servers.filter(s => s.id !== req.params.id)
+    res.json({message: 'Server has been removed.'})
 }
